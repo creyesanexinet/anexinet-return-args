@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "964444925793",
+    "firebase_url": "https://anexinetreturnargs.firebaseio.com",
+    "project_id": "anexinetreturnargs",
+    "storage_bucket": "anexinetreturnargs.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:964444925793:android:1157a7d886f46899a11f20",
+        "android_client_info": {
+          "package_name": "com.anexinet.returnargs.android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "964444925793-rj4juadm1op4s6l08qhkjlp5podpu1tr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB5Uaj_ejvwL2rr3GhNT2NAEsZ8X31ZiEI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "964444925793-rj4juadm1op4s6l08qhkjlp5podpu1tr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
