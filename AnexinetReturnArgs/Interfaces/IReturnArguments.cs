@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using AnexinetReturnArgs.Enums;
+using AnexinetReturnArgs.Models;
 
 namespace AnexinetReturnArgs.Interfaces
 {
@@ -19,43 +20,19 @@ namespace AnexinetReturnArgs.Interfaces
         /// <summary>
         /// Trace with firebase
         /// </summary>
-        /// <param name="userId">User unique identifier</param>
-        /// <param name="eventName">Event name</param>
-        /// <param name="screenName">Screen name</param>
-        /// <param name="actionType">Action type</param>
-        /// <param name="actionName">Action name</param>
-        /// <param name="logData">Log data</param>
-        /// <param name="exception">Exception</param>
-        /// <param name="endLogging">End logging</param>
-        void TraceWithFirebase(string userId = "", string eventName = "", string screenName = "", string actionType = "",
-            string actionName = "", IDictionary<string, string> logData = null, Exception exception = null, bool endLogging = false);
+        /// <param name="returnArgumentsTracingModel">Return arguments tracing model</param>
+        void TraceWithFirebase(ReturnArgumentsTracingModel returnArgumentsTracingModel);
 
         /// <summary>
         /// Trace with Microsoft App Center
         /// </summary>
-        /// <param name="userId">User unique identifier</param>
-        /// <param name="eventName">Event name</param>
-        /// <param name="screenName">Screen name</param>
-        /// <param name="actionType">Action type</param>
-        /// <param name="actionName">Action name</param>
-        /// <param name="logData">Log data</param>
-        /// <param name="exception">Exception</param>
-        /// <param name="endLogging">End logging</param>
-        void TraceWithMSAppCenter(string userId = "", string eventName = "", string screenName = "", string actionType = "",
-            string actionName = "", IDictionary<string, string> logData = null, Exception exception = null, bool endLogging = false);
+        /// <param name="returnArgumentsTracingModel">Return arguments tracing model</param>
+        void TraceWithMSAppCenter(ReturnArgumentsTracingModel returnArgumentsTracingModel);
 
         /// <summary>
         /// Trace with Amazon PinPoint
         /// </summary>
-        /// <param name="userId">User unique identifier</param>
-        /// <param name="eventName">Event name</param>
-        /// <param name="screenName">Screen name</param>
-        /// <param name="actionType">Action type</param>
-        /// <param name="actionName">Action name</param>
-        /// <param name="logData">Log data</param>
-        /// <param name="exception">Exception</param>
-        /// <param name="endLogging">End logging</param>
-        void TraceWithAmazonPinpoint(string userId = "", string eventName = "", string screenName = "", string actionType = "",
-            string actionName = "", IDictionary<string, string> logData = null, Exception exception = null, bool endLogging = false);
+        /// <param name="returnArgumentsTracingModel">Return arguments tracing model</param>
+        void TraceWithAmazonPinpoint(ReturnArgumentsTracingModel returnArgumentsTracingModel);
     }
 }
