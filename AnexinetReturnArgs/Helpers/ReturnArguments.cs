@@ -64,11 +64,14 @@ namespace AnexinetReturnArgs.Helpers
                 }
             }
 
-            // TODO: Localization
-            DependencyService.Get<IAlertManager>()
-                .ShowAlert(returnArgumentsTracingModel.Exception.Message,
-                            "Error",
-                            "OK");
+            if (returnArgumentsTracingModel.Exception != null)
+            {
+                // TODO: Localization
+                DependencyService.Get<IAlertManager>()
+                    .ShowAlert(returnArgumentsTracingModel.Exception.Message,
+                                "Error",
+                                "OK");
+            }
         }
 
         /// <summary>

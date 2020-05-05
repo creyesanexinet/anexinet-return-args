@@ -117,7 +117,8 @@ namespace AnexinetReturnArgs.ViewModels
                 Dictionary<string, string> logData = new Dictionary<string, string>();
                 logData.Add("Fails", "Sending the string 'My string'");
 
-                ReturnArgumentsTracingModel returnArgumentsTracingModel = new ReturnArgumentsTracingModel() {
+                ReturnArgumentsTracingModel returnArgumentsTracingModel = new ReturnArgumentsTracingModel()
+                {
                     UserId = "1",
                     EventName = "user_action",
                     ScreenName = "MainPage",
