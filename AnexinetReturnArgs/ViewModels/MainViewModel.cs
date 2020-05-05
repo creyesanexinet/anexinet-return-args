@@ -5,6 +5,7 @@ using System.Windows.Input;
 using AnexinetReturnArgs.Entities;
 using AnexinetReturnArgs.Enums;
 using AnexinetReturnArgs.Helpers;
+using AnexinetReturnArgs.Models;
 using Xamarin.Forms;
 
 namespace AnexinetReturnArgs.ViewModels
@@ -34,8 +35,7 @@ namespace AnexinetReturnArgs.ViewModels
         /// </summary>
         public MainViewModel()
         {
-            //ReturnArguments returnArguments = GetMyString();
-            //StringReturn = returnArguments.Value.ToString();
+            
         }
 
         /// <summary>
@@ -117,7 +117,17 @@ namespace AnexinetReturnArgs.ViewModels
                 Dictionary<string, string> logData = new Dictionary<string, string>();
                 logData.Add("Fails", "Sending the string 'My string'");
 
-                returnArguments.TraceWithFirebase("1", "user_action", "MainPage", "Button", "GetMyString", logData, ex);
+                ReturnArgumentsTracingModel returnArgumentsTracingModel = new ReturnArgumentsTracingModel() {
+                    UserId = "1",
+                    EventName = "user_action",
+                    ScreenName = "MainPage",
+                    ActionType = "Button",
+                    ActionName = "GetMyString",
+                    LogData = logData,
+                    Exception = ex
+                };
+
+                returnArguments.TraceWithFirebase(returnArgumentsTracingModel);
 
                 return returnArguments;
             }
@@ -174,7 +184,18 @@ namespace AnexinetReturnArgs.ViewModels
                 Dictionary<string, string> logData = new Dictionary<string, string>();
                 logData.Add("Fails", "Sending cars");
 
-                returnArguments.TraceWithFirebase("1", "user_action", "MainPage", "Button", "GettingCars", logData, ex);
+                ReturnArgumentsTracingModel returnArgumentsTracingModel = new ReturnArgumentsTracingModel()
+                {
+                    UserId = "1",
+                    EventName = "user_action",
+                    ScreenName = "MainPage",
+                    ActionType = "Button",
+                    ActionName = "GettingCars",
+                    LogData = logData,
+                    Exception = ex
+                };
+
+                returnArguments.TraceWithFirebase(returnArgumentsTracingModel);
 
                 return returnArguments;
             }

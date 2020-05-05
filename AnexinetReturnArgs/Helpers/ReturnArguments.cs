@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Threading.Tasks;
 using AnexinetReturnArgs.Enums;
 using AnexinetReturnArgs.Interfaces;
+using AnexinetReturnArgs.Models;
 using Xamarin.Forms;
 
 namespace AnexinetReturnArgs.Helpers
@@ -43,29 +44,21 @@ namespace AnexinetReturnArgs.Helpers
         /// <summary>
         /// Trace with firebase
         /// </summary>
-        /// <param name="userId">User unique identifier</param>
-        /// <param name="eventName">Event name</param>
-        /// <param name="screenName">Screen name</param>
-        /// <param name="actionType">Action type</param>
-        /// <param name="actionName">Action name</param>
-        /// <param name="logData">Log data</param>
-        /// <param name="exception">Exception</param>
-        /// <param name="endLogging">End logging</param>
-        public void TraceWithFirebase(string userId = "", string eventName = "", string screenName = "", string actionType = "",
-            string actionName = "", IDictionary<string, string> logData = null, Exception exception = null, bool endLogging = false)
+        /// <param name="returnArgumentsTracingModel">Return arguments tracing model</param>
+        public void TraceWithFirebase(ReturnArgumentsTracingModel returnArgumentsTracingModel)
         {
             firebaseService = DependencyService.Get<IFirebaseService>();
 
-            firebaseService.SetUserId(userId);
-            firebaseService.ReportHandledException(exception);
-            firebaseService.ReportUnHandledException(exception);
-            firebaseService.LogEvent(eventName);
-            firebaseService.SetCurrentScreen(screenName);
-            firebaseService.LogActivity(Message, endLogging);
+            firebaseService.SetUserId(returnArgumentsTracingModel.UserId);
+            firebaseService.ReportHandledException(returnArgumentsTracingModel.Exception);
+            firebaseService.ReportUnHandledException(returnArgumentsTracingModel.Exception);
+            firebaseService.LogEvent(returnArgumentsTracingModel.EventName);
+            firebaseService.SetCurrentScreen(returnArgumentsTracingModel.ScreenName);
+            firebaseService.LogActivity(Message, returnArgumentsTracingModel.EndLogging);
 
-            if (logData != null && logData.Count > 0)
+            if (returnArgumentsTracingModel.LogData != null && returnArgumentsTracingModel.LogData.Count > 0)
             {
-                foreach (var parameter in logData)
+                foreach (var parameter in returnArgumentsTracingModel.LogData)
                 {
                     firebaseService.SetLogData(parameter.Key, parameter.Value);
                 }
@@ -73,7 +66,7 @@ namespace AnexinetReturnArgs.Helpers
 
             // TODO: Localization
             DependencyService.Get<IAlertManager>()
-                .ShowAlert(exception.Message,
+                .ShowAlert(returnArgumentsTracingModel.Exception.Message,
                             "Error",
                             "OK");
         }
@@ -81,16 +74,8 @@ namespace AnexinetReturnArgs.Helpers
         /// <summary>
         /// Trace with Microsoft App Center
         /// </summary>
-        /// <param name="userId">User unique identifier</param>
-        /// <param name="eventName">Event name</param>
-        /// <param name="screenName">Screen name</param>
-        /// <param name="actionType">Action type</param>
-        /// <param name="actionName">Action name</param>
-        /// <param name="logData">Log data</param>
-        /// <param name="exception">Exception</param>
-        /// <param name="endLogging">End logging</param>
-        public void TraceWithMSAppCenter(string userId = "", string eventName = "", string screenName = "", string actionType = "",
-            string actionName = "", IDictionary<string, string> logData = null, Exception exception = null, bool endLogging = false)
+        /// <param name="returnArgumentsTracingModel">Return arguments tracing model</param>
+        public void TraceWithMSAppCenter(ReturnArgumentsTracingModel returnArgumentsTracingModel)
         {
             // TODO: add logging logic
         }
@@ -98,16 +83,8 @@ namespace AnexinetReturnArgs.Helpers
         /// <summary>
         /// Trace with Amazon PinPoint
         /// </summary>
-        /// <param name="userId">User unique identifier</param>
-        /// <param name="eventName">Event name</param>
-        /// <param name="screenName">Screen name</param>
-        /// <param name="actionType">Action type</param>
-        /// <param name="actionName">Action name</param>
-        /// <param name="logData">Log data</param>
-        /// <param name="exception">Exception</param>
-        /// <param name="endLogging">End logging</param>
-        public void TraceWithAmazonPinpoint(string userId = "", string eventName = "", string screenName = "", string actionType = "",
-            string actionName = "", IDictionary<string, string> logData = null, Exception exception = null, bool endLogging = false)
+        /// <param name="returnArgumentsTracingModel">Return arguments tracing model</param>
+        public void TraceWithAmazonPinpoint(ReturnArgumentsTracingModel returnArgumentsTracingModel)
         {
             // TODO: add logging logic
         }
